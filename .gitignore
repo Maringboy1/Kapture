@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Runtime state and temporary files
+state/logs/*
+!state/logs/.gitkeep
+state/tmp/*
+!state/tmp/.gitkeep
+state/config.json
+state/*.tmp
+state/*.json.tmp
+
+# Captures directory (if any)
+captures/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Operating System files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kapture
+GenericName=Screenshot and Screen Recorder
+Comment=Modern screenshot and screen recording tool for Kali Linux (X11)
+Exec=kapture
+Icon=kapture
+Terminal=false
+Type=Application
+Categories=Utility;AudioVideo;Recorder;
+Keywords=screenshot;screen;record;capture;video;audio;
+StartupNotify=true

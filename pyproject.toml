@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kapture"
+version = "1.0.0"
+description = "Modern screenshot and screen recording tool for Kali Linux (X11)"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Komo" }
+]
+license = { text = "MIT" }
+dependencies = [
+    "PyQt6>=6.4.0",
+    "Pillow>=9.0.0",
+]
+
+[project.scripts]
+kapture = "kapture.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["kapture*"]
+
+[tool.setuptools.package-data]
+kapture = ["../assets/*"]
