@@ -1,3 +1,4 @@
+export PYTHONDONTWRITEBYTECODE=1
 PYTHON ?= python3
 
 .PHONY: all run test self-test compile clean install deps
@@ -23,6 +24,6 @@ compile:
 	$(PYTHON) -m compileall -q .
 
 clean:
-	rm -rf state/tmp/* state/logs/* build/ dist/ *.egg-info .pytest_cache 2>/dev/null || true
+	rm -rf state/ captures/ build/ dist/ *.egg-info .pytest_cache 2>/dev/null || true
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete 2>/dev/null || true

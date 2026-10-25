@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
+import shutil
 import subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -35,6 +36,11 @@ def ensure_dependencies():
                 print(f"[!] Could not auto-install via pip: {e}")
                 print("[!] Please run './install.sh' or 'sudo apt install python3-pyqt6 python3-pil'")
                 sys.exit(1)
+
+    if not shutil.which("ffmpeg"):
+        print("[!] Warning: 'ffmpeg' was not found on your system.")
+        print("[!] Kapture requires ffmpeg for screen recording and screenshots.")
+        print("[!] Please run './install.sh' or 'sudo apt install ffmpeg'.")
 
 
 ensure_dependencies()

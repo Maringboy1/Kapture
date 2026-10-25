@@ -15,14 +15,8 @@ venv/
 .venv/
 env/
 
-# Runtime state and temporary files
-state/logs/*
-!state/logs/.gitkeep
-state/tmp/*
-!state/tmp/.gitkeep
-state/config.json
-state/*.tmp
-state/*.json.tmp
+# Runtime state and temporary files (automatically generated at runtime)
+state/
 
 # Captures directory (if any)
 captures/
