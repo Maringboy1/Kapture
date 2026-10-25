@@ -29,10 +29,16 @@ def capture_full(screen_index=0, cursor=True, delay=0):
         time.sleep(delay)
     from PyQt6.QtWidgets import QApplication
     screens = QApplication.screens()
-    idx = clamp(screen_index, 0, max(0, len(screens) - 1))
-    scr = screens[idx]
-    g = scr.geometry()
-    x, y, w, h = g.x(), g.y(), g.width(), g.height()
+    if not screens:
+        from kapture.core.windows import display
+        d = display()
+        geom = d.get_geometry(d.root())
+        x, y, w, h = (geom[0], geom[1], geom[2], geom[3]) if geom else (0, 0, 1920, 1080)
+    else:
+        idx = clamp(screen_index, 0, max(0, len(screens) - 1))
+        scr = screens[idx]
+        g = scr.geometry()
+        x, y, w, h = g.x(), g.y(), g.width(), g.height()
     args = ["-f", "x11grab", "-video_size", f"{w}x{h}", "-i", f":0.0+{x},{y}"]
     if not cursor:
         args = ["-f", "x11grab", "-draw_mouse", "0", "-video_size", f"{w}x{h}", "-i", f":0.0+{x},{y}"]
@@ -71,9 +77,14 @@ def capture_region(rx, ry, rw, rh, cursor=False, delay=0):
 def virtual_geometry():
     from PyQt6.QtWidgets import QApplication
     screens = QApplication.screens()
-    rects = [(s.geometry().x(), s.geometry().y(), s.geometry().width(), s.geometry().height()) for s in screens]
-    from kapture.core.geometry import union_rects
-    return union_rects(rects)
+    if screens:
+        rects = [(s.geometry().x(), s.geometry().y(), s.geometry().width(), s.geometry().height()) for s in screens]
+        from kapture.core.geometry import union_rects
+        return union_rects(rects)
+    from kapture.core.windows import display
+    d = display()
+    geom = d.get_geometry(d.root())
+    return (geom[0], geom[1], geom[2], geom[3]) if geom else (0, 0, 1920, 1080)
 
 
 def capture_window(wid, cursor=True, delay=0, include_titlebar=False):
