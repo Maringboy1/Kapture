@@ -6,6 +6,6 @@ Exec=kapture
 Icon=kapture
 Terminal=false
 Type=Application
-Categories=Utility;AudioVideo;Recorder;
+Categories=AudioVideo;Recorder;
 Keywords=screenshot;screen;record;capture;video;audio;
 StartupNotify=true
